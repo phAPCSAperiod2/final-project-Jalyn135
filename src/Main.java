@@ -1,37 +1,43 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
-        // Create some Meal objects
-        Meal breakfast = new Meal("Oatmeal", 300, "2026-04-15");
-        Meal lunch = new Meal("Chicken Salad", 500, "2026-04-15");
-        Meal dinner = new Meal("Pasta", 700, "2026-04-15");
-
-        // Put meals into a list
-        ArrayList<Meal> meals = new ArrayList<>();
-        meals.add(breakfast);
-        meals.add(lunch);
-        meals.add(dinner);
-
-        // Print meals to verify data using getters
-        System.out.println("Meals for the day:");
-        for (Meal m : meals) {
-            System.out
-                    .println("Name: " + m.getMealName() + ", Calories: " + m.getCalories() + ", Date: " + m.getDate());
-        }
 
         // Create a User
         User user = new User("Alex", 1800, 160.0);
 
-        System.out.println("\nUser: " + user.getName());
-        System.out.println("Calorie goal: " + user.getCalorieGoal());
+        // Create NutritionManager for this user
+        NutritionManager manager = new NutritionManager(user);
 
-        // Use NutritionCalculator to get total calories
-        int totalCalories = NutritionCalculator.calculateTotalCalories(meals);
-        System.out.println("Total calories consumed: " + totalCalories);
+        // Create some Meal objects
+        Meal breakfast = new Meal("Oatmeal", 300, "04-15-2026");
+        Meal lunch = new Meal("Chicken Salad", 500, "04-15-2026");
+        Meal dinner = new Meal("Pasta", 700, "04-15-2026");
+        Meal snack = new Meal("Apple", 100, "04-16-2026");
 
-        // Compare to goal
-        String feedback = NutritionCalculator.compareToGoal(totalCalories, user.getCalorieGoal());
+        // Add meals to the manager
+        manager.addMeal(breakfast);
+        manager.addMeal(lunch);
+        manager.addMeal(dinner);
+        manager.addMeal(snack);
+
+        // Print all meals to verify storage
+        System.out.println("All logged meals:");
+        for (Meal m : manager.getAllMeals()) {
+            System.out.println(m);
+        }
+
+        // Test daily calories for 2026-04-15
+        String date = "04-15-2026";
+        int dailyTotal = manager.getDailyCalories(date);
+
+        System.out.println("\nDaily calories for " + date + ": " + dailyTotal);
+
+        // Compare to user's goal using NutritionCalculator
+        System.out.println("User calorie goal: " + user.getCalorieGoal());
+        String feedback = NutritionCalculator.compareToGoal(dailyTotal, user.getCalorieGoal());
         System.out.println("Feedback: " + feedback);
+
+        // Test updating calorie goal
+        manager.setCalorieGoal(1600);
+        System.out.println("\nUpdated calorie goal: " + user.getCalorieGoal());
     }
 }

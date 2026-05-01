@@ -34,4 +34,30 @@ public class NutritionManager {
     public User getUser() {
         return user;
     }
+
+    // ⭐ Sprint 3 Day 1: get meals for a specific date
+    public ArrayList<Meal> getMealsByDate(String date) {
+        ArrayList<Meal> mealsForDate = new ArrayList<>();
+        for (Meal m : meals) {
+            if (m.getDate().equals(date)) {
+                mealsForDate.add(m);
+            }
+        }
+        return mealsForDate;
+    }
+
+    // ⭐ Sprint 3 Day 2: basic daily summary
+    public String getDailySummary(String date) {
+        int total = getDailyCalories(date);
+        return "Summary for " + date + ": " + total + " calories consumed.";
+    }
+
+    // ⭐ Sprint 3 Day 3: print meals for a specific date
+    public void printMealsByDate(String date) {
+        ArrayList<Meal> mealsForDate = getMealsByDate(date);
+        System.out.println("Meals for " + date + ":");
+        for (Meal m : mealsForDate) {
+            System.out.println(m);
+        }
+    }
 }

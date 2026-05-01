@@ -34,15 +34,4 @@ public class NutritionManager {
     public User getUser() {
         return user;
     }
-
-    // ⭐ Sprint 3 Starter Method (safe to commit now)
-    public ArrayList<Meal> getMealsByDate(String date) {
-        ArrayList<Meal> mealsForDate = new ArrayList<>();
-        for (Meal m : meals) {
-            if (m.getDate().equals(date)) {
-                mealsForDate.add(m);
-            }
-        }
-        return mealsForDate;
-    }
 }

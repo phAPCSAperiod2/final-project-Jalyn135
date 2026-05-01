@@ -8,10 +8,10 @@ public class Main {
         NutritionManager manager = new NutritionManager(user);
 
         // Create some Meal objects
-        Meal breakfast = new Meal("Oatmeal", 300, "04-15-2026");
-        Meal lunch = new Meal("Chicken Salad", 500, "04-15-2026");
-        Meal dinner = new Meal("Pasta", 700, "04-15-2026");
-        Meal snack = new Meal("Apple", 100, "04-16-2026");
+        Meal breakfast = new Meal("Oatmeal", 300, "2026-04-15");
+        Meal lunch = new Meal("Chicken Salad", 500, "2026-04-15");
+        Meal dinner = new Meal("Pasta", 700, "2026-04-15");
+        Meal snack = new Meal("Apple", 100, "2026-04-16");
 
         // Add meals to the manager
         manager.addMeal(breakfast);
@@ -26,7 +26,7 @@ public class Main {
         }
 
         // Test daily calories for 2026-04-15
-        String date = "04-15-2026";
+        String date = "2026-04-15";
         int dailyTotal = manager.getDailyCalories(date);
 
         System.out.println("\nDaily calories for " + date + ": " + dailyTotal);

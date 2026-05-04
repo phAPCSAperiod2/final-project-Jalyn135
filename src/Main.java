@@ -1,43 +1,46 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Create a User
-        User user = new User("Alex", 1800, 160.0);
+        Scanner scanner = new Scanner(System.in);
 
-        // Create NutritionManager for this user
-        NutritionManager manager = new NutritionManager(user);
+        System.out.println("Welcome to the Weekly Health Tracker!");
+        System.out.print("Enter your weekly calorie goal: ");
+        int goal = scanner.nextInt();
 
-        // Create some Meal objects
-        Meal breakfast = new Meal("Oatmeal", 300, "2026-04-15");
-        Meal lunch = new Meal("Chicken Salad", 500, "2026-04-15");
-        Meal dinner = new Meal("Pasta", 700, "2026-04-15");
-        Meal snack = new Meal("Apple", 100, "2026-04-16");
+        HealthTracker tracker = new HealthTracker(goal);
 
-        // Add meals to the manager
-        manager.addMeal(breakfast);
-        manager.addMeal(lunch);
-        manager.addMeal(dinner);
-        manager.addMeal(snack);
+        boolean addingMeals = true;
 
-        // Print all meals to verify storage
-        System.out.println("All logged meals:");
-        for (Meal m : manager.getAllMeals()) {
-            System.out.println(m);
+        while (addingMeals) {
+            tracker.showHealthyOptions();
+            System.out.print("Enter the number of the meal you want to add: ");
+            int choice = scanner.nextInt();
+
+            Meal selectedMeal = tracker.createMealFromChoice(choice);
+
+            if (selectedMeal != null) {
+                tracker.addMeal(selectedMeal);
+                System.out.println(selectedMeal.getMealName() + " added!");
+            } else {
+                System.out.println("Invalid choice. Try again.");
+            }
+
+            System.out.print("Do you want to add another meal? (yes/no): ");
+            String again = scanner.next().toLowerCase();
+
+            if (again.equals("no")) {
+                addingMeals = false;
+            }
         }
 
-        // Test daily calories for 2026-04-15
-        String date = "2026-04-15";
-        int dailyTotal = manager.getDailyCalories(date);
+        // End of week summary
+        tracker.printWeeklyMeals();
+        int total = tracker.getTotalWeeklyCalories();
+        System.out.println("\nTotal calories for the week: " + total);
+        System.out.println(tracker.compareToGoal());
 
-        System.out.println("\nDaily calories for " + date + ": " + dailyTotal);
-
-        // Compare to user's goal using NutritionCalculator
-        System.out.println("User calorie goal: " + user.getCalorieGoal());
-        String feedback = NutritionCalculator.compareToGoal(dailyTotal, user.getCalorieGoal());
-        System.out.println("Feedback: " + feedback);
-
-        // Test updating calorie goal
-        manager.setCalorieGoal(1600);
-        System.out.println("\nUpdated calorie goal: " + user.getCalorieGoal());
+        scanner.close();
     }
 }

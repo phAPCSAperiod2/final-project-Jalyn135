@@ -1,7 +1,7 @@
 public class Meal {
     private String mealName;
     private int calories;
-    private String date; // simple String for now (e.g., "2026-04-15")
+    private String date; // not used heavily now, but kept for structure
 
     public Meal(String mealName, int calories, String date) {
         this.mealName = mealName;
@@ -23,6 +23,6 @@ public class Meal {
 
     @Override
     public String toString() {
-        return mealName + " - " + calories + " cal on " + date;
+        return mealName + " - " + calories + " cal";
     }
 }

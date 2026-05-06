@@ -18,18 +18,55 @@ public class HealthTracker {
         System.out.println("4. Fruit Bowl - 150 calories");
         System.out.println("5. Smoothie - 200 calories");
         System.out.println("6. Brown Rice & Veggies - 350 calories");
+        System.out.println("7. Grilled Salmon - 350 calories");
+        System.out.println("8. Greek Yogurt Parfait - 250 calories");
+        System.out.println("9. Sweet Potato - 200 calories");
+        System.out.println("10. Chicken Stir Fry - 400 calories");
+        System.out.println("11. Quinoa Bowl - 320 calories");
+        System.out.println("12. Baked Tofu - 280 calories");
+        System.out.println("13. Turkey Sandwich - 350 calories");
+        System.out.println("14. Green Smoothie - 220 calories");
+        System.out.println("15. Lentil Soup - 280 calories");
+        System.out.println("16. Roasted Vegetables - 180 calories");
     }
 
     // Convert user choice into a Meal object
     public Meal createMealFromChoice(int choice) {
         switch (choice) {
-            case 1: return new Meal("Grilled Chicken", 400, "Week");
-            case 2: return new Meal("Oatmeal", 300, "Week");
-            case 3: return new Meal("Salad", 250, "Week");
-            case 4: return new Meal("Fruit Bowl", 150, "Week");
-            case 5: return new Meal("Smoothie", 200, "Week");
-            case 6: return new Meal("Brown Rice & Veggies", 350, "Week");
-            default: return null;
+            case 1:
+                return new Meal("Grilled Chicken", 400, "Week");
+            case 2:
+                return new Meal("Oatmeal", 300, "Week");
+            case 3:
+                return new Meal("Salad", 250, "Week");
+            case 4:
+                return new Meal("Fruit Bowl", 150, "Week");
+            case 5:
+                return new Meal("Smoothie", 200, "Week");
+            case 6:
+                return new Meal("Brown Rice & Veggies", 350, "Week");
+            case 7:
+                return new Meal("Grilled Salmon", 350, "Week");
+            case 8:
+                return new Meal("Greek Yogurt Parfait", 250, "Week");
+            case 9:
+                return new Meal("Sweet Potato", 200, "Week");
+            case 10:
+                return new Meal("Chicken Stir Fry", 400, "Week");
+            case 11:
+                return new Meal("Quinoa Bowl", 320, "Week");
+            case 12:
+                return new Meal("Baked Tofu", 280, "Week");
+            case 13:
+                return new Meal("Turkey Sandwich", 350, "Week");
+            case 14:
+                return new Meal("Green Smoothie", 220, "Week");
+            case 15:
+                return new Meal("Lentil Soup", 280, "Week");
+            case 16:
+                return new Meal("Roasted Vegetables", 180, "Week");
+            default:
+                return null;
         }
     }
 

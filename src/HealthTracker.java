@@ -1,15 +1,29 @@
 import java.util.ArrayList;
 
+/**
+ * Tracks a user's weekly meals and compares total calories against a weekly
+ * goal.
+ */
 public class HealthTracker {
 
+    /** The meals added for the current week. */
     private ArrayList<Meal> weeklyMeals = new ArrayList<>();
+
+    /** The target calorie goal for the week. */
     private int weeklyCalorieGoal;
 
+    /**
+     * Creates a new health tracker with the given weekly calorie goal.
+     *
+     * @param weeklyCalorieGoal the calorie goal for the week
+     */
     public HealthTracker(int weeklyCalorieGoal) {
         this.weeklyCalorieGoal = weeklyCalorieGoal;
     }
 
-    // List of healthy foods the user can choose from
+    /**
+     * Prints a list of healthy meal options to the console.
+     */
     public void showHealthyOptions() {
         System.out.println("\nChoose a meal from the list below:");
         System.out.println("1. Grilled Chicken - 400 calories");
@@ -30,7 +44,12 @@ public class HealthTracker {
         System.out.println("16. Roasted Vegetables - 180 calories");
     }
 
-    // Convert user choice into a Meal object
+    /**
+     * Converts a numeric menu choice into a {@link Meal} object.
+     *
+     * @param choice the meal number selected by the user
+     * @return a Meal corresponding to the choice, or null if the choice is invalid
+     */
     public Meal createMealFromChoice(int choice) {
         switch (choice) {
             case 1:
@@ -70,12 +89,20 @@ public class HealthTracker {
         }
     }
 
-    // Add meal to weekly tracker
+    /**
+     * Adds a meal to the weekly meal tracker.
+     *
+     * @param meal the meal to add
+     */
     public void addMeal(Meal meal) {
         weeklyMeals.add(meal);
     }
 
-    // Calculate total calories for the week
+    /**
+     * Calculates the total number of calories consumed this week.
+     *
+     * @return the sum of calories for all recorded weekly meals
+     */
     public int getTotalWeeklyCalories() {
         int total = 0;
         for (Meal m : weeklyMeals) {
@@ -84,7 +111,12 @@ public class HealthTracker {
         return total;
     }
 
-    // Compare total calories to goal
+    /**
+     * Compares the weekly calorie total against the goal and returns a summary
+     * message.
+     *
+     * @return a message indicating whether the goal was met, exceeded, or undercut
+     */
     public String compareToGoal() {
         int total = getTotalWeeklyCalories();
         if (total < weeklyCalorieGoal) {
@@ -96,7 +128,9 @@ public class HealthTracker {
         }
     }
 
-    // Print all meals chosen
+    /**
+     * Prints the names and calorie counts of all meals recorded for the week.
+     */
     public void printWeeklyMeals() {
         System.out.println("\nMeals you chose this week:");
         for (Meal m : weeklyMeals) {

@@ -1,6 +1,15 @@
 import java.util.Scanner;
 
+/**
+ * Runs the weekly health tracker application, allowing the user to select meals
+ * and compare totals to a goal.
+ */
 public class Main {
+    /**
+     * Entry point for the health tracker program.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

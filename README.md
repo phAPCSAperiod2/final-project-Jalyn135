@@ -1,189 +1,86 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23509033)
-# AP Computer Science A – Final Project
-## Software & Systems Development Capstone
+# Weekly Health Tracker
 
-Welcome to your **Final Project repository**.
+A simple Java console app that helps a user choose healthy meals for the week, record them, and compare the total calories against a weekly goal.
 
-This repository will hold:
-- Your complete Java project
-- Your project journal and planning artifacts
-- Your final, working software product
+## What this software does
 
-This is not just an assignment — it is a **capstone software project**.
+The program allows a user to:
+- enter a weekly calorie goal
+- choose meals from a healthy menu
+- add those meals to a weekly log
+- view the total weekly calories
+- see whether the weekly goal was met, exceeded, or under the goal
 
----
+## Who it’s for
 
-## 📌 Project Overview (Read Carefully)
+This health tracker is for a user who wants a quick, menu-based way to track healthy meal choices and compare weekly calories against a target.
 
-In this project, you will:
-- Design and build a **real piece of software**
-- Solve **one real problem** for **one clearly defined user**
-- Work using **agile development**
-- Show evidence of **professional software practices**
-- Use AI responsibly as a planning and support tool
+## How to run the program
 
-You will leave this course with something you can confidently say:
+1. Open a terminal in the project folder.
+2. Compile the Java files:
+   `javac src/*.java`
+3. Run the program:
+   `java -cp src Main`
+4. Enter a weekly calorie goal when prompted.
+5. Select meals by number, then choose whether to add more meals.
+6. View the weekly meal summary and goal comparison.
 
-> “I built this software.”
+## Technical overview
 
----
+### Main classes
+- `Main` — starts the program, reads user input, and controls meal entry.
+- `HealthTracker` — stores weekly meals, shows menu options, creates meals from the selected choice, calculates total calories, and compares totals to the goal.
+- `Meal` — represents a food item with a name, calorie count, and a date label.
 
-## 🔁 Required Workflow (How You Must Work)
+### Class diagram
+```
+Main
+  + main(String[] args)
+      |
+      v
+HealthTracker
+  - ArrayList<Meal> weeklyMeals
+  - int weeklyCalorieGoal
+  + showHealthyOptions()
+  + createMealFromChoice(int): Meal
+  + addMeal(Meal)
+  + getTotalWeeklyCalories(): int
+  + compareToGoal(): String
+  + printWeeklyMeals()
+      |
+      v
+Meal
+  - String mealName
+  - int calories
+  - String date
+  + getMealName(): String
+  + getCalories(): int
+  + getDate(): String
+  + toString(): String
+```
 
-### ✅ Daily GitHub Commits (Required)
-You are expected to:
-- Make **at least one meaningful commit every class day**
-- Write **descriptive commit messages** that explain:
-  - What you changed
-  - Why you changed it
-  - What goal it supports
+### Key data structures and logic
+- `ArrayList<Meal>` in `HealthTracker` stores all meals added during the current run.
+- The meal menu is mapped to `Meal` objects inside `HealthTracker.createMealFromChoice(int)`.
+- Total calories are calculated by summing calories from all recorded meals.
+- The program reports whether the user stayed under, hit, or exceeded the weekly goal.
 
-✅ Good commit messages:
-- `Sprint 1: Created Player class and tested constructor`
-- `Sprint 2: Implemented 2D map and verified movement logic`
+## Known limitations / future improvements
 
-🚫 Poor commit messages:
-- `updates`
-- `stuff`
-- `final version`
+- The program does not store meal history between runs.
+- Meal date tracking is present in the `Meal` class but not fully used.
+- Future improvements could include:
+  - adding a real date for each meal
+  - saving weekly logs to a file
+  - allowing custom meal entries instead of a fixed menu
+  - using a graphical interface or a more interactive menu
 
-Your commit history is **evidence of your thinking and progress**.
+## Files included
+- `src/Main.java`
+- `src/HealthTracker.java`
+- `src/Meal.java`
 
----
+## Notes
 
-## 🔁 Agile Development & Sprints
-
-You will complete **4 sprints**.  
-Each sprint includes:
-- Planning
-- Building
-- Testing
-- Feedback and reflection
-
-Each sprint ends with:
-- A sprint grade
-- A sprint reflection
-- Feedback exchanged with peers
-
-🚫 You may NOT complete multiple sprints at once.  
-✅ Each sprint grade is **final**.
-
----
-
-## 🧪 Testing Expectations
-
-Testing is required every sprint.
-
-✅ Testing may include:
-- Running the program with different inputs
-- Print‑based testing
-- Driver program testing
-- Verifying logic and edge cases
-
-You should be able to explain:
-- What you tested
-- How you tested it
-- What you discovered or fixed
-
----
-
-## 🗂️ Required Project Components
-
-Your final project must include:
-
-- ✅ Multiple interacting Java classes
-- ✅ Encapsulation (`private` fields, appropriate getters/setters)
-- ✅ Arrays and/or ArrayLists
-- ✅ A purposeful **2D array**
-- ✅ A working driver program (`main`)
-- ✅ A class diagram matching your final code
-- ✅ Clear documentation
-- ✅ A program that runs and works
-
-Inheritance and interfaces are optional but encouraged.
-
----
-
-## 🤖 Using AI (Allowed, With Responsibility)
-
-You may use AI to:
-- Organize ideas
-- Plan sprints
-- Debug code
-- Suggest design improvements
-
-You must:
-- Document how you used AI
-- Review and evaluate AI suggestions
-- Understand and explain your final code
-
-AI should act like:
-> A junior developer you supervise — not something that builds the project for you.
-
----
-
-## 📘 Project Journal
-
-All planning, work logs, testing notes, and reflections live in **your project journal**.
-
-If it happened during this project, it should be documented there.
-
----
-
-## ✅ Final Submission Expectations
-
-By the end of the project:
-- Your program should run reliably
-- Your technical requirements should be met
-- Your code should be readable and organized
-- Your repository should look **professional**
-
----
-
-# ✨ Final Step: README Update (Very Important)
-
-When your project is complete, you must **rewrite this README**  
-so it reflects **your software**, not the assignment.
-
-Your final README should include:
-
----
-
-## 🔹 Project Title
-
-## 🔹 What This Software Does
-Explain your project in plain language.
-
-## 🔹 Who It’s For
-Describe the user and the problem being solved.
-
-## 🔹 How to Run the Program
-Clear steps so someone else can run your project.
-
-## 🔹 Technical Overview
-Brief description of:
-- Main classes
-- Key data structures
-- Program logic
-
-## 🔹 Class Diagram
-Include or link your final class diagram.
-
-## 🔹 Known Limitations / Future Improvements
-What works well, and what you would improve with more time.
-
----
-
-## 🎯 Final Reminder
-
-This repository represents **you as a developer**.
-
-Take pride in:
-- Your process
-- Your commits
-- Your code
-- Your documentation
-
-Build something real.  
-Build it thoughtfully.  
-Build it well.
+This README is based on the current state of the project files and describes the existing weekly health tracking functionality.
